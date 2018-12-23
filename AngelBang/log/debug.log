@@ -7238,3 +7238,379 @@ Traceback (most recent call last):
   File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 533, in invalid_block_tag
     get_text_list(["'%s'" % p for p in parse_until], 'or'),
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 24: 'url:register', expected 'endblock'. Did you forget to register or load this tag?
+2018-12-23 15:33:13,000 [Thread-484:114280] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /angelbang/comments/comments/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1612, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1330, in response_action
+    response = func(self, request, queryset)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\actions.py", line 48, in delete_selected
+    queryset.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\query.py", line 662, in delete
+    deleted, _rows_count = collector.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\deletion.py", line 301, in delete
+    count = query.delete_batch(pk_list, self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 41, in delete_batch
+    num_deleted += self.do_query(self.get_meta().db_table, self.where, using=using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 24, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+2018-12-23 15:33:41,735 [Thread-490:203212] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /angelbang/comments/comments/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1612, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1330, in response_action
+    response = func(self, request, queryset)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\actions.py", line 48, in delete_selected
+    queryset.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\query.py", line 662, in delete
+    deleted, _rows_count = collector.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\deletion.py", line 301, in delete
+    count = query.delete_batch(pk_list, self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 41, in delete_batch
+    num_deleted += self.do_query(self.get_meta().db_table, self.where, using=using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 24, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+2018-12-23 15:34:10,225 [Thread-494:152548] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /angelbang/comments/comments/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1612, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1330, in response_action
+    response = func(self, request, queryset)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\actions.py", line 48, in delete_selected
+    queryset.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\query.py", line 662, in delete
+    deleted, _rows_count = collector.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\deletion.py", line 301, in delete
+    count = query.delete_batch(pk_list, self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 41, in delete_batch
+    num_deleted += self.do_query(self.get_meta().db_table, self.where, using=using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 24, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+2018-12-23 15:35:04,662 [Thread-509:234812] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /angelbang/comments/comments/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\utils\decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1612, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\options.py", line 1330, in response_action
+    response = func(self, request, queryset)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\contrib\admin\actions.py", line 48, in delete_selected
+    queryset.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\query.py", line 662, in delete
+    deleted, _rows_count = collector.delete()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\deletion.py", line 301, in delete
+    count = query.delete_batch(pk_list, self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 41, in delete_batch
+    num_deleted += self.do_query(self.get_meta().db_table, self.where, using=using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\subqueries.py", line 24, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\models\sql\compiler.py", line 1067, in execute_sql
+    cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 165, in execute
+    result = self._query(query)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 860, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1061, in _read_query_result
+    result.read()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1349, in read
+    first_packet = self.connection._read_packet()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 1018, in _read_packet
+    packet.check_error()
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\connections.py", line 384, in check_error
+    err.raise_mysql_exception(self._data)
+  File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
