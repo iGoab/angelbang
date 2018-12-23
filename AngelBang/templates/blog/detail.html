@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+{{ post.title }}
+{% endblock %}
+{% block css %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+{% endblock %}
+{% block main %}
+<article class="article">
+                    <header class="entry-header">
+                        <h1 class="entry-title">{{ post.title }}</h1>
+                        <div class="entry-meta">
+                            <span class="article-date"><time class="entry-date" datetime="{{ post.creaetd_time}}">{{ post.created_time }}</time></span>
+                            <span class="article-count">{{ post.body | wordcount }}字</span>
+                            <span class="views-count">{{ post.views }}阅读</span>
+                            <span class="comments-link">4 评论</span>
+                            <span class="like-count">{{post.likes}}喜欢</span>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        {{ post.body | safe }}
+                    </div>
+                    <div>
+                        <p class=" text-center">---EOF---</p>
+                    </div>
+                <div style="text-align:center">
+                    <div>
+                        <button class="btn btn-primary article-sponsor" id="js-sponsor">
+                            <i class="fa fa-jpy" aria-hidden="true"></i>
+                            <span>觉得对你有帮助，请随意打赏</span>
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+
+
+                        <div class="row" style ="display:none;">
+                            <div class="col-md-6">
+                                <figure data-filtered="filtered">
+                                    <img src="{% static 'blog/images/zhifubao.jpg' %}" alt="支付宝收款二维码" class="img-responsive" style="border:1px solid gray;">
+                                    <figcaption class="text-center text-primary">支付宝</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure data-filtered="filtered">
+                                    <img src="{% static 'blog/images/weixin.jpg' %}" alt="微信收款二维码"  class="img-responsive" style="border:1px solid gray;">
+                                    <figcaption class="text-center " style="color:green"> 微信</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feed" id="feed1" style="width:100%;">
+                    <div class="heart" id="like1" rel="like" ></div>
+                    {% csrf_token %}
+                    <p class="likeCount" id="likeCount1" >{{ post.likes }}</p>
+                </div>
+                <!--分享-->
+
+                <!--标签-->
+                    <div class="post-tags">
+                        <div class="list-group">
+                            {% if post.tags.count != 0 %}
+                                <span>标签：</span>
+                                {% for tag in post.tags.all %}
+                                    <a href="{% url 'blog:tag' tag.pk %}"><li class="label label-default">{{ tag.name }}</li></a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                <span>
+                    {% if pre_post %}
+                    <a href="{% url 'blog:detail' pre_post.pk %}"><i class="fa fa-angle-double-left" aria-hidden="true"></i>{{ pre_post.title }}</a>
+                    {% endif %}
+                </span>
+                <span class="pull-right">
+                    {% if next_post %}
+                    <a href="{% url 'blog:detail' next_post.pk %}">{{ next_post.title }}<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    {% endif %}
+                </span>
+                </article>
+                <div class="comment-area">
+                    <h3 class="comment-area-title">提交评论区</h3>
+                    {% if user.is_authenticated %}
+
+                        <form id="comment-form" action="{% url 'comments:update_comments' %}" method="POST" style="overflow:hidden;">
+                            {% csrf_token %}
+                            <label for="comment_text">{{ user.username }}, 欢迎评论~</label>
+                            <div id="reply_content_container" style="display:none;">
+                                <p>回复:</p>
+                                <div id="reply_content">
+
+                                </div>
+                            </div>
+                            {% for field in comment_form %}
+                                {{ field }}
+                            {% endfor %}
+                            <span id="comment-error" class="text-danger pull-left"></span>
+                            <input type="submit" value="评论" class="btn btn-primary pull-right" >
+                        </form>
+                    {% else %}
+                        您尚未登录,登录之后方可评论~
+                    <a href="{% url 'login' %}?from={{ request.get_full_path }}" class="btn btn-primary">登录</a>
+                    <span> or </span>
+                    <a href="{% url 'register' %}?from={{ request.get_full_path }}" class="btn btn-info"> 注册</a>
+                    {% endif %}
+                </div>
+                <div class="comment-area">
+                    <h3 class="comment-area-title">评论列表</h3>
+                    <div id="comment_list">
+                        {% for comment in comment_list %}
+                            <div id="root_{{ comment.pk }}" class="comment">
+                                <span>{{ comment.user.username }}</span>
+                                <div id="comment_{{ comment.pk }}">{{ comment.text|safe }}</div>
+                                <span>{{ comment.created_time |date:"Y年m月d日 H时i分s秒" }}</span>
+                                <a href="javascript:reply({{ comment.pk }})">回复</a>
+                                {% for reply in comment.root_comment.all %}
+                                    <div class="reply">
+                                        <span>{{ reply.user.username  }}</span>
+                                        <span><span class="fa fa-share" aria-hidden="true"></span></span>
+                                        <span>{{ reply.reply_to.username }}:</span>
+                                        <div id="comment_{{ reply.pk }}">{{ reply.text|safe }}</div>
+                                        <span>{{ reply.created_time |date:"Y年m月d日 H时i分s秒" }}</span>
+                                        <span></span>
+                                        <a href="javascript:reply({{ reply.pk }})">回复</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% empty %}
+                        <span id="no_comment">暂无评论</span>
+                        {% endfor %}
+                    </div>
+                </div>
+{% endblock main %}
+{% block toc %}
+        <div class="widget-content">
+            <h3 class="widget-title">文章目录</h3>
+            <div class="toc-sidebar">{{ post.toc | safe }}</div>
+        </div>
+{% endblock toc %}
+{% block script %}
+<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#F60&amp;text=分享到"></script>
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        };
+        $(document).ready(function()
+{
+
+$('body').on("click",'.heart',function()
+{
+
+	var A=$(this).attr("id");
+	var B=A.split("like");
+	var messageID=B[1];
+	var C=parseInt($("#likeCount"+messageID).html());
+	$(this).css("background-position","")
+	var D=$(this).attr("rel");
+    var E = 0;
+	if(D === 'like')
+	{
+	$("#likeCount"+messageID).html(C+1);
+	E = C + 1;
+	$(this).addClass("heartAnimation").attr("rel","unlike");
+
+	}
+	else
+	{
+	$("#likeCount"+messageID).html(C-1);
+	E = C - 1;
+	$(this).removeClass("heartAnimation").attr("rel","like");
+	$(this).css("background-position","left");
+	}
+ var csrftoken = getCookie('csrftoken');
+                var likes = E;
+                $.ajax({
+                    type:'POST',
+                    url:'{% url 'blog:update' %}',
+                    data:{'pk': {{post.id}}, 'likes':likes },
+                    dataType:'json',
+                    success:function(data, status){
+                        if(data.status == 1){
+                            alert('已经赞过啦！');
+                        }else{
+                            alert('点赞成功!');
+                        }
+                    },
+                    beforeSend: function(xhr, settings) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                });
+
+});
+});</script>
+<script type="text/javascript">
+    $("#comment-form").submit(function(){
+        $("#comment-error").text("")
+        //判断是否为空
+        if(CKEDITOR.instances["id_text"].document.getBody().getText().trim()==''){
+            $("#comment-error").text("评论内容不能为空")
+            return false;
+        }
+        // 更新数据到textarea
+        CKEDITOR.instances['id_text'].updateElement();
+        //异步提交
+        $.ajax({
+            url:"{% url 'comments:update_comments' %}",
+            type:'POST',
+            data:$(this).serialize(),
+            cache:false,
+            success:function(data){
+                console.log(data);
+                if(data['status']=='SUCCESS'){
+                    if($('#reply_comment_id').val()=='0'){
+                        // 插入数据
+                        var comment_html = '<div id="root_' +  data['pk'] +'"class="comment"><span>' + data['username'] + '</span><div id="comment_' + data['pk'] +'">' + data['text'] + '</div><span>' +  data['created_time']+ '</span><a href="javascript:reply(' + data['pk'] +');">回复</a></div>'
+                        $("#comment_list").prepend(comment_html);
+                    }else{
+                    	//插入回复
+                        var reply_html = '<div class="reply"> <span>' + data['username'] + '</span><span><span class="fa fa-share" aria-hidden="true"></span></span><span>' + data['reply_to'] + ':</span><div id="comment_' + data['pk'] + '">' + data['text'] + '</div><span>' +  data['created_time']+ '</span><span></span><a href="javascript:reply(' + data['pk'] + ');">回复</a></div>'
+                        $("#root_" + data['root_pk']).append(reply_html);
+                    }
+                    //清空编辑框内容
+                    CKEDITOR.instances['id_text'].setData('');
+                    $('#reply_content_container').hide();
+                    $("#reply_comment_id").val('0');
+                    $('#no_comment').remove();
+                 } else{
+                    //显示错误信息
+                    $('#comment-error').text(data['message']);
+                 }
+            },
+            error:function(xhr){
+                console.log(xhr);
+            },
+        });
+        return false;
+    });
+    function reply(reply_comment_id){
+        //设置值
+        $("#reply_comment_id").val(reply_comment_id);
+        var html=$("#comment_" + reply_comment_id ).html();
+        $('#reply_content').html(html);
+        $('#reply_content_container').show();
+        $('html').animate({scrollTop:$("#comment-form").offset().top - 60}, 300, function(){
+           CKEDITOR.instances['id_text'].focus();
+        });
+    };
+</script>
+{% endblock script %}

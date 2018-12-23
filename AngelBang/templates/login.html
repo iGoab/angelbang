@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    登录
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-4 col-sm-4 col-xs-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">登录</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        {% for field in login_form %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            <p class="text-danger">{{ field.errors.as_text }}</p>
+                        {% endfor %}
+                        <div class="text-danger">{{ login_form.non_field_errors }}</div>
+                        <div >
+                            <a href="{% url 'register' %}" class="btn btn-success">注册</a>
+                            <input type="submit" value="登录" class="btn btn-primary pull-right">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
