@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load comment_tags %}
 {% block title %}
 AngelBang
 {% endblock %}
@@ -16,7 +17,7 @@ AngelBang
                     </span>
                     <div class="abstract">{{ post.excerpt }}...</div>
                     <span class="post-view text-muted"><a href="{{ post.get_absolute_url }}"><span class="fa fa-eye fa-fw "></span>{{ post.views }}</a></span>
-                    <span class="post-comment text-muted"><a href="#"><span class="fa fa-comments-o fa-fw"></span>123</a></span>
+                    <span class="post-comment text-muted"><a href="#"><span class="fa fa-comments-o fa-fw"></span>{% get_comment_count post %}</a></span>
                     <span class="post-favor text-muted"><span class="fa fa-heart fa-fw"></span>{{ post.likes }}</span>
                 </article>
                 {% empty %}

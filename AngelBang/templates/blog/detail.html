@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load comment_tags %}
 {% block title %}
 {{ post.title }}
 {% endblock %}
@@ -16,7 +17,7 @@
                             <span class="article-date"><time class="entry-date" datetime="{{ post.creaetd_time}}">{{ post.created_time }}</time></span>
                             <span class="article-count">{{ post.body | wordcount }}字</span>
                             <span class="views-count">{{ post.views }}阅读</span>
-                            <span class="comments-link">{{ comment_count }}评论</span>
+                            <span class="comments-link">{% get_comment_count post %}评论</span>
                             <span class="like-count">{{post.likes}}喜欢</span>
                         </div>
                     </header>

@@ -141,7 +141,6 @@ class PostDetailView(DetailView):
         comment_list = Comments.objects.filter(content_type = post_content_type,object_id = post.pk, parent=None)
         # 评论表单
         comment_form = CommentForm(initial={'content_type':post_content_type.model, 'object_id':post.pk, 'reply_comment_id': 0})
-        comment_count = Comments.objects.filter(content_type = post_content_type,object_id = post.pk).count()
         # 上一页，下一页
         pre_post = Post.objects.filter(id__gt=post.id).last()
         next_post = Post.objects.filter(id__lt=post.id).first()
@@ -149,7 +148,6 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context.update({
             'comment_form':comment_form,
-            'comment_count':comment_count,
             'comment_list':comment_list.order_by('-created_time'),
             'pre_post':pre_post,
             'next_post':next_post,

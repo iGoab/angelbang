@@ -7614,3 +7614,522 @@ Traceback (most recent call last):
   File "F:\django_project\blogproject_env\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
     raise errorclass(errno, errval)
 django.db.utils.IntegrityError: (1451, 'Cannot delete or update a parent row: a foreign key constraint fails (`angelbang`.`comments_comments`, CONSTRAINT `comments_comments_parent_id_d9fe1944_fk_comments_comments_id` FOREIGN KEY (`parent_id`) REFERENCES `comments_comments` (`id`))')
+2018-12-24 09:46:33,359 [Thread-2:137452] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/5/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+    return parser.libraries[name]
+KeyError: 'comment_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1082, in load
+    lib = find_library(parser, name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1029, in find_library
+    name, "\n".join(sorted(parser.libraries)),
+django.template.exceptions.TemplateSyntaxError: 'comment_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_static
+admin_urls
+blog_tags
+cache
+highlight
+i18n
+l10n
+log
+more_like_this
+static
+staticfiles
+tz
+2018-12-24 09:46:48,054 [Thread-5:54096] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/5/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+    return parser.libraries[name]
+KeyError: 'comment_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1082, in load
+    lib = find_library(parser, name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1029, in find_library
+    name, "\n".join(sorted(parser.libraries)),
+django.template.exceptions.TemplateSyntaxError: 'comment_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_static
+admin_urls
+blog_tags
+cache
+highlight
+i18n
+l10n
+log
+more_like_this
+static
+staticfiles
+tz
+2018-12-24 09:47:48,541 [Thread-8:207116] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/5/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+    return parser.libraries[name]
+KeyError: 'comment_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1082, in load
+    lib = find_library(parser, name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1029, in find_library
+    name, "\n".join(sorted(parser.libraries)),
+django.template.exceptions.TemplateSyntaxError: 'comment_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_static
+admin_urls
+blog_tags
+cache
+highlight
+i18n
+l10n
+log
+more_like_this
+static
+staticfiles
+tz
+2018-12-24 09:49:13,528 [Thread-11:143184] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/5/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1025, in find_library
+    return parser.libraries[name]
+KeyError: 'comment_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1082, in load
+    lib = find_library(parser, name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 1029, in find_library
+    name, "\n".join(sorted(parser.libraries)),
+django.template.exceptions.TemplateSyntaxError: 'comment_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_static
+admin_urls
+blog_tags
+cache
+highlight
+i18n
+l10n
+log
+more_like_this
+static
+staticfiles
+tz
+2018-12-24 09:49:54,824 [Thread-16:252644] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 450, in parse
+    raise self.error(token, 'Empty variable tag on line %d' % token.lineno)
+django.template.exceptions.TemplateSyntaxError: Empty variable tag on line 19
+2018-12-24 09:50:51,174 [Thread-17:161436] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 475, in parse
+    compile_func = self.tags[command]
+KeyError: 'test'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 477, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 533, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 19: 'test', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2018-12-24 09:51:12,688 [Thread-2:24768] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 475, in parse
+    compile_func = self.tags[command]
+KeyError: 'test'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 477, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 533, in invalid_block_tag
+    get_text_list(["'%s'" % p for p in parse_until], 'or'),
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 19: 'test', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2018-12-24 10:54:57,622 [Thread-2:164820] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/6/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\library.py", line 121, in compile_func
+    kwonly, kwonly_defaults, takes_context, function_name,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\library.py", line 308, in parse_bits
+    (name, ", ".join("'%s'" % p for p in unhandled_params + unhandled_kwargs)))
+django.template.exceptions.TemplateSyntaxError: 'get_comment_count' did not receive value(s) for the argument(s): 'obj'
+2018-12-24 10:54:59,709 [Thread-3:56040] [django.request:118] [exception:handle_uncaught_exception] [ERROR] - Internal Server Error: /post/1/
+Traceback (most recent call last):
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\core\handlers\base.py", line 156, in _get_response
+    response = response.render()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 483, in parse
+    raise self.error(token, e)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\library.py", line 121, in compile_func
+    kwonly, kwonly_defaults, takes_context, function_name,
+  File "F:\django_project\blogproject_env\lib\site-packages\django\template\library.py", line 308, in parse_bits
+    (name, ", ".join("'%s'" % p for p in unhandled_params + unhandled_kwargs)))
+django.template.exceptions.TemplateSyntaxError: 'get_comment_count' did not receive value(s) for the argument(s): 'obj'
