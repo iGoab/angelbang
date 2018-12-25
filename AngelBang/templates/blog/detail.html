@@ -111,15 +111,15 @@
                     <div id="comment_list">
                         {% for comment in comment_list %}
                             <div id="root_{{ comment.pk }}" class="comment">
-                                <label class="label label-primary">{{ comment.user.username }}</label>
+                                <label class="label label-primary">{{ comment.user.username }}</label>  {% if comment.user.is_superuser%}<label class="text-danger">[博主]</label> {% endif%}
                                 <div id="comment_{{ comment.pk }}" style="margin:10px;padding:10px;border:1px solid #ccc;">{{ comment.text|safe }}</div>
                                 <span>{{ comment.created_time |date:"Y年m月d日 H时i分s秒" }}</span>
                                 <a href="javascript:reply({{ comment.pk }})" class="text-info">回复</a>
                                 {% for reply in comment.root_comment.all %}
                                     <div class="reply">
-                                        <label class="label label-default">{{ reply.user.username  }}</label>
+                                        <label class="label label-default">{{ reply.user.username  }}</label>  {% if reply.user.is_superuser%}<label class="text-danger">[博主]</label> {% endif%}
                                         <span><span class="fa fa-share" aria-hidden="true"></span></span>
-                                        <label class="label label-primary">{{ reply.reply_to.username }}</label>
+                                        <label class="label label-primary">{{ reply.reply_to.username }}</label> {% if reply.reply_to.is_superuser%}<label class="text-danger">[博主]</label> {% endif%}
                                         <div id="comment_{{ reply.pk }}" style="margin:10px;padding:10px;border:1px solid #ccc;">{{ reply.text|safe }}</div>
                                         <span>{{ reply.created_time |date:"Y年m月d日 H时i分s秒" }}</span>
                                         <span></span>
