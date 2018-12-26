@@ -15,7 +15,7 @@
                         <h1 class="entry-title">{{ post.title }}</h1>
                         <div class="entry-meta">
                             <span class="article-date"><time class="entry-date" datetime="{{ post.creaetd_time}}">{{ post.created_time }}</time></span>
-                            <span class="article-count">{{ post.body | wordcount }}字</span>
+                            <span class="article-count">{{ post.word_count }}字</span>
                             <span class="views-count">{{ post.views }}阅读</span>
                             <span class="comments-link">{% get_comment_count post %}评论</span>
                             <span class="like-count">{{post.likes}}喜欢</span>

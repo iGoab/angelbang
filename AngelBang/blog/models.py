@@ -92,6 +92,14 @@ class Post(models.Model):
         self.likes = likes
         self.save(update_fields=['likes'])
 
+    def word_count(self):
+        md = markdown.Markdown(extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ])
+        # TODO: refactor and test
+        return len(strip_tags(md.convert(self.body)))
+        
     def save(self, *args, **kwargs):
         md = markdown.Markdown(extensions=MARKDOWNX_MARKDOWN_EXTENSIONS,
                                 extensions_configs=MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS)

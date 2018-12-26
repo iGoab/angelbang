@@ -18,7 +18,7 @@
     <session id="881592113">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.opened" value="2" />
@@ -97,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/blog/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="121" column="145" lean-forward="true" selection-start-line="121" selection-start-column="145" selection-end-line="121" selection-end-column="145" />
+            <state relative-caret-position="540">
+              <caret line="117" column="75" lean-forward="true" selection-start-line="117" selection-start-column="75" selection-end-line="117" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -310,7 +310,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -506,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/blog/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="121" column="145" lean-forward="true" selection-start-line="121" selection-start-column="145" selection-end-line="121" selection-end-column="145" />
+        <state relative-caret-position="540">
+          <caret line="117" column="75" lean-forward="true" selection-start-line="117" selection-start-column="75" selection-end-line="117" selection-end-column="75" />
         </state>
       </provider>
     </entry>
